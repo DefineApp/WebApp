@@ -59,6 +59,10 @@ const ContactState = (props) => {
   };
 
   // Delete Challenge
+
+  const deleteContact = (id) => {
+    dispatch({ type: DELETE_CHALLENGE, payload: id });
+  };
   // Set Current Challenge
   // Clear Current Challenge
   // Update Challenge
@@ -66,7 +70,9 @@ const ContactState = (props) => {
   // Clear Filter
 
   return (
-    <ContactContext.Provider value={{ contacts: state.contacts, addContact }}>
+    <ContactContext.Provider
+      value={{ contacts: state.contacts, addContact, deleteContact }}
+    >
       {props.children}
     </ContactContext.Provider>
   );

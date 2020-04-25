@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import ContactContext from "../../context/contact/contactContext";
 
 const ContactItem = ({ contact }) => {
+  const contactContext = useContext(ContactContext);
   const { id, name, type, description, points } = contact;
+  const { deleteContact } = contactContext;
+  const onDelete = () => {
+    deleteContact(id);
+  };
   return (
     <div className="card bg-light">
       <h3 className="text-primary text-left">
@@ -29,7 +35,9 @@ const ContactItem = ({ contact }) => {
         )}
       </ul>
       <button className="btn btn-dark btn-sm">Edit</button>
-      <button className="btn btn-danger btn-sm">Delete</button>
+      <button className="btn btn-danger btn-sm" onClick={onDelete}>
+        Delete
+      </button>
       <button className="btn btn-success btn-sm">Complete Task</button>
     </div>
   );
