@@ -4,6 +4,7 @@ import "./App.css";
 import Login from "./Components/Login";
 import Home from "./Components/pages/Home";
 import About from "./Components/pages/About";
+import Submissions from "./Components/pages/Submissions";
 import Navbar from "./Components/layout/Navbar";
 import ContactState from "./context/contact/ContactState";
 
@@ -17,6 +18,7 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/submissions" component={Submissions} />
             </Switch>
           </div>
         </Fragment>
