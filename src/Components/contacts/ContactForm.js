@@ -1,7 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ContactContext from "../../context/contact/contactContext";
 const ContactForm = () => {
   const contactContext = useContext(ContactContext);
+  const { addContact, current } = contactContext;
+
+  useEffect(() => {
+    if (current !== null) {
+      setContact(current);
+    } else {
+      setContact({
+        name: "",
+        description: "",
+        type: "Nature",
+        points: "",
+      });
+    }
+  }, [contactContext, current]);
 
   const [contact, setContact] = useState({
     name: "",
@@ -16,6 +30,7 @@ const ContactForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    addContact(contact);
     contactContext.addContact(contact);
     setContact({
       name: "",
@@ -27,7 +42,9 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <h2 className="text-primary">Add Challenge</h2>
+      <h2 className="text-primary">
+        {current ? "Edit Challenge" : "Add Challenge"}
+      </h2>
       <input
         type="text"
         placeholder="Name"
@@ -69,7 +86,7 @@ const ContactForm = () => {
       <div>
         <input
           type="submit"
-          value="Add Challenge"
+          value={current ? "Update Challenge" : "Add Challenge"}
           className="btn btn-primary btn-block"
         />
       </div>

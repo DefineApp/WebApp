@@ -48,6 +48,7 @@ const ContactState = (props) => {
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       },
     ],
+    current: null,
   };
 
   const [state, dispatch] = useReducer(contactReducer, initialState);
@@ -64,14 +65,28 @@ const ContactState = (props) => {
     dispatch({ type: DELETE_CHALLENGE, payload: id });
   };
   // Set Current Challenge
+  const setCurrent = (contact) => {
+    dispatch({ type: SET_CURRENT, payload: contact });
+  };
+
   // Clear Current Challenge
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
   // Update Challenge
   // Filter Challenge
   // Clear Filter
 
   return (
     <ContactContext.Provider
-      value={{ contacts: state.contacts, addContact, deleteContact }}
+      value={{
+        contacts: state.contacts,
+        current: state.current,
+        addContact,
+        deleteContact,
+        setCurrent,
+        clearCurrent,
+      }}
     >
       {props.children}
     </ContactContext.Provider>
