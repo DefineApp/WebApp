@@ -28,32 +28,42 @@ const ContactForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <h2 className="text-primary">Add Challenge</h2>
-      <input type="text" placeholder="Name" value={name} onChange={onChange} />
+      <input
+        type="text"
+        placeholder="Name"
+        name="name"
+        value={name}
+        onChange={onChange}
+      />
       <input
         type="text"
         placeholder="Description"
         value={description}
+        name="description"
         onChange={onChange}
       />
       <input
         type="text"
         placeholder="Points"
         value={points}
+        name="points"
         onChange={onChange}
       />
       <h5>Challenge Type</h5>
       <input
         type="radio"
-        placeholder="Type"
-        value="nature"
+        name="type"
+        value="Nature"
         checked={type === "Nature"}
+        onChange={onChange}
       />{" "}
       Nature{" "}
       <input
         type="radio"
-        placeholder="Type"
+        name="type"
         value="Energy"
         checked={type === "Energy"}
+        onChange={onChange}
       />{" "}
       Energy
       <div>

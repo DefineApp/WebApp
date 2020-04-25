@@ -54,7 +54,7 @@ const ContactState = (props) => {
 
   // Add Challenge
   const addContact = (contact) => {
-    contact.id = uuid.v4();
+    contact.id = uuid();
     dispatch({ type: ADD_CHALLENGE, payload: contact });
   };
 
@@ -66,7 +66,7 @@ const ContactState = (props) => {
   // Clear Filter
 
   return (
-    <ContactContext.Provider value={{ contacts: state.contacts }}>
+    <ContactContext.Provider value={{ contacts: state.contacts, addContact }}>
       {props.children}
     </ContactContext.Provider>
   );
