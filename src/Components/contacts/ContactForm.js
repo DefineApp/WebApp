@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import ContactContext from "../../context/contact/contactContext";
 const ContactForm = () => {
-  const contactContext = (useContext = useContext(ContactContext));
+  const contactContext = useContext(ContactContext);
+
   const [contact, setContact] = useState({
     name: "",
     description: "",

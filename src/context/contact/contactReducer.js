@@ -13,7 +13,7 @@ export default (state, action) => {
     case ADD_CHALLENGE:
       return {
         ...state,
-        contacts: [],
+        contacts: [...state.contacts, action.payload],
       };
     default:
       return state;
