@@ -15,6 +15,9 @@ const Navbar = ({ title, icon }) => {
         <li>
           <Link to="/about"> About </Link>
         </li>
+        <li>
+          <Link to="/submissions"> Submissions </Link>
+        </li>
       </ul>
     </div>
   );
@@ -26,7 +29,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: "EarthX",
+  title: "Défine",
   icon: "fas fa-id-card-alt",
 };
 
